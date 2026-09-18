@@ -1,0 +1,350 @@
+/* =========================================================
+   ESTILOS GLOWCLICK - "Belleza que brilla contigo"
+   ========================================================= */
+
+:root {
+  /* Paleta de Colores */
+  --bg-main: #ea93f1;
+  --bg-dark: #070707;
+  --bg-header-gradient: linear-gradient(to right, #800080, #ff00ff);
+  --bg-footer: #e962ac;
+  --color-primary: #D86B98;
+  --color-primary-hover: #c45785;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-gray: #333333;
+  --border-color: #cccccc;
+  
+  /* Fuentes */
+  --font-main: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- ESTILOS GENERALES ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--color-dark);
+  margin: 0;
+}
+
+h2 {
+  color: #0f0f0f;
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-dark);
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.logo a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#img-logo {
+  width: 40px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* ---------- MENÚ ---------- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  display: block;
+  color: var(--color-light);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 5px;
+  transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  color: var(--color-primary);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* =========================================================
+   COMPONENTES DE DISEÑO (HEADER, CAJAS, CONTENIDO)
+   ========================================================= */
+.encabezado {
+  background: var(--bg-header-gradient);
+  color: var(--color-light);
+  text-align: center;
+  padding: 20px;
+}
+
+.contenido {
+  width: 90%;
+  max-width: 1200px; /* Evita que en pantallas gigantes se deforme */
+  margin: auto;
+  padding: 0 12px;
+}
+
+.caja {
+  background-color: var(--color-light);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.caja ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.caja li {
+  position: relative;
+  padding-left: 28px;
+  margin: 6px 0;
+}
+
+.caja li::after {
+  content: "☑︎";
+  position: absolute;
+  left: 0;
+  color: var(--color-gray);
+  font-weight: bold;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background-color: #1e1e1e;
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #1e1e1e;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* =========================================================
+   TABLAS Y FORMULARIOS
+   ========================================================= */
+.tabla-datos {
+  width: 95%;
+  margin: auto;
+  font-size: 14px;
+  border-collapse: collapse; /* Evita bordes dobles extraños */
+}
+
+.tabla-datos th,
+.tabla-datos td {
+  padding: 8px;
+  border: 1px solid var(--color-dark);
+}
+
+/* Estilos unificados de Formulario / Login */
+.login-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--color-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-container h2 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 25px;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-gray);
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
+  font-size: 15px;
+}
+
+.login-container input:focus {
+  border-color: var(--color-primary);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.pie {
+  background-color: var(--bg-footer);
+  color: var(--color-light);
+  text-align: center;
+  padding: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLETS (max-width: 1040px)
+   ========================================================= */
+@media (max-width: 1040px) {
+  /* Eliminadas reglas repetitivas innecesarias que ya heredaban del flujo principal */
+  .caja {
+    width: 95%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - CELULARES (max-width: 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background-color: var(--bg-dark);
+    padding: 10px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-menu li a {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .nav-menu li a:hover {
+    background-color: #FDD1E1;
+    color: var(--color-primary);
+  }
+
+  .encabezado {
+    padding: 18px 12px;
+  }
+
+  .encabezado h1 {
+    font-size: 26px;
+  }
+
+  .encabezado p {
+    font-size: 14px;
+  }
+
+  .contenido {
+    width: 100%;
+    margin: 15px auto;
+  }
+
+  .caja {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .caja h2 {
+    font-size: 22px;
+  }
+
+  .caja p,
+  .caja li {
+    font-size: 14px;
+  }
+
+  .caja li {
+    padding-left: 26px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+  }
+
+  .pie {
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+}
