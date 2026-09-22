@@ -24,11 +24,19 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Evita que las secciones queden tapadas por el menú fijo al hacer clic */
+  scroll-padding-top: 170px;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-main);
   color: var(--color-dark);
   margin: 0;
+  /* Espacio reservado superior para el header y navbar fijos */
+  padding-top: 160px;
 }
 
 h2 {
@@ -42,33 +50,74 @@ ul {
 }
 
 /* =========================================================
-   NAVBAR
+   HEADER Y NAVBAR FIJOS (ESTÁTICOS EN EL SCROLL)
    ========================================================= */
+.header-fijo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- ENCABEZADO MORADO CON LOGO A LA IZQUIERDA ---------- */
+.encabezado {
+  background: var(--bg-header-gradient);
+  color: var(--color-light);
+  padding: 15px 30px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ESTILOS Y EFECTO HOVER DEL LOGO */
+.logo-header {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  /* Transición suave para el cambio de tamaño y sombra */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+.logo-header:hover {
+  transform: scale(1.3); /* Aumenta el tamaño un 30% al pasar el cursor */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Brillo sutil */
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Elemento espaciador transparente para mantener el título en el centro exacto */
+.spacer {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+/* ---------- NAVBAR (BARRA NEGRA) ---------- */
 .navbar {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: var(--bg-dark);
-  padding: 15px 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
+  padding: 10px 20px;
 }
 
-.logo a {
-  text-decoration: none;
-  color: var(--color-primary);
-  font-size: 25px;
-  font-weight: bold;
-}
-
-#img-logo {
-  width: 40px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* ---------- MENÚ ---------- */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -76,6 +125,8 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-menu li a {
@@ -83,142 +134,91 @@ ul {
   color: var(--color-light);
   text-decoration: none;
   font-size: 16px;
-  padding: 10px 5px;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  padding: 6px 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
 }
 
 .nav-menu li a:hover {
   color: var(--color-primary);
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--color-primary);
-  font-size: 30px;
-  cursor: pointer;
-  padding: 5px;
-}
-
 /* =========================================================
-   COMPONENTES DE DISEÑO (HEADER, CAJAS, CONTENIDO)
+   COMPONENTES DE DISEÑO (CAJAS Y CONTENIDO)
    ========================================================= */
-.encabezado {
-  background: var(--bg-header-gradient);
-  color: var(--color-light);
-  text-align: center;
-  padding: 20px;
-}
-
-.contenido {
+.contenido-principal {
   width: 90%;
-  max-width: 1200px; /* Evita que en pantallas gigantes se deforme */
-  margin: auto;
-  padding: 0 12px;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
 .caja {
   background-color: var(--color-light);
   border: 1px solid var(--border-color);
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px auto;
+  padding: 25px;
+  border-radius: 10px;
+  margin: 25px auto;
   max-width: 800px;
-}
-
-.caja ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.caja li {
-  position: relative;
-  padding-left: 28px;
-  margin: 6px 0;
-}
-
-.caja li::after {
-  content: "☑︎";
-  position: absolute;
-  left: 0;
-  color: var(--color-gray);
-  font-weight: bold;
-}
-
-/* =========================================================
-   BOTONES
-   ========================================================= */
-.btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 18px;
-  background-color: #1e1e1e;
-  color: var(--color-light);
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid #1e1e1e;
-  border-radius: 4px;
-  transition: 0.3s ease;
-}
-
-.btn:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================================================
    TABLAS Y FORMULARIOS
    ========================================================= */
-.tabla-datos {
-  width: 95%;
-  margin: auto;
-  font-size: 14px;
-  border-collapse: collapse; /* Evita bordes dobles extraños */
+.tabla-datos-g {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
-.tabla-datos th,
-.tabla-datos td {
-  padding: 8px;
-  border: 1px solid var(--color-dark);
+.tabla-datos-g th,
+.tabla-datos-g td {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
-/* Estilos unificados de Formulario / Login */
+.tabla-datos-g th {
+  background-color: var(--bg-main);
+  color: var(--color-dark);
+}
+
 .login-container {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
-  margin: 40px auto;
-  padding: 30px;
+  margin: 20px auto 0 auto;
+  padding: 25px;
   background-color: var(--color-light);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
 }
 
 .login-container h2 {
   text-align: center;
   color: var(--color-primary);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .login-container label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--color-gray);
   font-weight: bold;
 }
 
 .login-container input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 18px;
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  outline: none;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .login-container input:focus {
   border-color: var(--color-primary);
+  outline: none;
 }
 
 .btn-login {
@@ -245,106 +245,50 @@ ul {
   background-color: var(--bg-footer);
   color: var(--color-light);
   text-align: center;
-  padding: 10px;
+  padding: 15px;
+  margin-top: 40px;
 }
 
 /* =========================================================
-   RESPONSIVE - TABLETS (max-width: 1040px)
-   ========================================================= */
-@media (max-width: 1040px) {
-  /* Eliminadas reglas repetitivas innecesarias que ya heredaban del flujo principal */
-  .caja {
-    width: 95%;
-  }
-}
-
-/* =========================================================
-   RESPONSIVE - CELULARES (max-width: 768px)
+   RESPONSIVE - CELULARES Y TABLETS
    ========================================================= */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
+  body {
+    padding-top: 210px;
   }
 
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    background-color: var(--bg-dark);
-    padding: 10px 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-menu li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-menu li a {
-    width: 100%;
-    padding: 14px;
-  }
-
-  .nav-menu li a:hover {
-    background-color: #FDD1E1;
-    color: var(--color-primary);
+  html {
+    scroll-padding-top: 220px;
   }
 
   .encabezado {
-    padding: 18px 12px;
+    padding: 10px 15px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .spacer {
+    display: none;
+  }
+
+  .logo-header {
+    height: 55px;
   }
 
   .encabezado h1 {
-    font-size: 26px;
+    font-size: 1.2rem;
   }
 
-  .encabezado p {
+  .nav-menu {
+    gap: 8px;
+  }
+
+  .nav-menu li a {
     font-size: 14px;
-  }
-
-  .contenido {
-    width: 100%;
-    margin: 15px auto;
-  }
-
-  .caja {
-    padding: 14px;
-    margin-bottom: 12px;
-  }
-
-  .caja h2 {
-    font-size: 22px;
-  }
-
-  .caja p,
-  .caja li {
-    font-size: 14px;
-  }
-
-  .caja li {
-    padding-left: 26px;
-  }
-
-  .btn {
-    padding: 10px 14px;
-  }
-
-  .pie {
-    padding: 14px 10px;
-    font-size: 14px;
+    padding: 4px 6px;
   }
 }
